@@ -1,0 +1,22 @@
+.input-field {
+  background-color: white;
+  border: 1px solid hsl(0, 0%, 70%);
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-field > span {
+  line-height: 100%;
+}
+
+.input-field > input {
+  border: none;
+  background-color: transparent;
+  margin-left: 0.5rem;
+}
+
+.input-field > input:focus {
+  outline: none;
+}
