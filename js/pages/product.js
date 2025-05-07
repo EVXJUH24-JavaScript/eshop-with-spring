@@ -9,8 +9,8 @@ const productViewContainer = document.getElementById("product-view");
 // Hämta ut sökparameter och baka in i URLSearchParams
 // som hjälper oss att hämta ut id:t
 const urlParams = new URLSearchParams(window.location.search);
-// Hämta ut productId genom .get metoden och omvandla till nummer
-const productId = Number.parseInt(urlParams.get("productId"));
+// Hämta ut productId genom .get metoden
+const productId = urlParams.get("productId");
 
 function setupProductPage() {
   // Ladda in den produkten vi har tryckt på från API:et och

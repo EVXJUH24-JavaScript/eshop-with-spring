@@ -1,10 +1,9 @@
 import { Product } from "../models/product.js";
-
-const BASE_URL = "https://dummyjson.com";
+import { BASE_URL } from "./api.js";
 
 // Anropar DummyJson med 'fetch' för att hämta alla produkter
 export async function apiGetProducts() {
-  const response = await fetch(BASE_URL + "/products");
+  const response = await fetch(BASE_URL + "/product/all");
 
   // Om responsen returnerade något annat än 200 Ok (eller annan Ok status kod)
   if (!response.ok) {
@@ -13,16 +12,16 @@ export async function apiGetProducts() {
     throw new Error("Failed to fetch products");
   }
 
-  const productObject = await response.json();
+  const products = await response.json();
   // Omvandla API objekten till vår egen model
   // för enklare hantering
-  return productObject.products.map(
+  return products.map(
     (product) =>
       new Product(
         product.id,
         product.title,
         product.category,
-        product.thumbnail,
+        product.thumbnailUrl,
         product.images
       )
   );
@@ -30,7 +29,7 @@ export async function apiGetProducts() {
 
 // Anropar DummyJson med 'fetch' för att hämta en specifik produkt baserat på id
 export async function apiGetProductById(productId) {
-  const response = await fetch(BASE_URL + "/products/" + productId);
+  const response = await fetch(BASE_URL + "/product/" + productId);
 
   // Om responsen returnerade något annat än 200 Ok (eller annan Ok status kod)
   if (!response.ok) {
@@ -47,7 +46,7 @@ export async function apiGetProductById(productId) {
     product.id,
     product.title,
     product.category,
-    product.thumbnail,
+    product.thumbnailUrl,
     product.images
   );
 }
